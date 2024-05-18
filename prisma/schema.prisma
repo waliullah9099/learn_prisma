@@ -14,10 +14,63 @@ datasource db {
 }
 
 
+
+
+
+model Numbers {
+
+// Number
+
+  id Int @id @default(autoincrement())
+  col1 Int @db.UnsignedInt 
+
+  col2 BigInt 
+  col3 BigInt @db.UnsignedBigInt
+
+  col4 Int @db.SmallInt
+  col5 Int @db.UnsignedSmallInt
+
+  col6 Int @db.MediumInt
+  col7 Int @db.UnsignedMediumInt
+
+  col8 Int @db.TinyInt
+  col9 Int @db.UnsignedTinyInt
+
+  col10 Decimal
+
+  col11 Float
+  col12 Float @db.Float
+
+  col13 BigInt @default(100)
+  col14 BigInt @unique
+
+}
+
+
+model Strings {
+
+  // string
+  
+ id Int @id @default(autoincrement())
+  col15 String
+  col16 String?
+  col17 String @default("Soto vai vai")
+  col18 String @db.VarChar(700)
+  col19 String @db.Text
+  col20 String @db.TinyText
+  col21 String @db.LongText
+}
+
+
+enum UserTypes {
+  New 
+  Exixting
+  VIP
+  Regular 
+  Bad
+}
+
 model User {
   id Int @id @default(autoincrement())
-  email String @unique
-  name String
-  village String
-  institute String
+  remarks UserTypes
 }
