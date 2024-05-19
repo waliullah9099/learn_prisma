@@ -72,5 +72,31 @@ enum UserTypes {
 
 model User {
   id Int @id @default(autoincrement())
-  remarks UserTypes
+  remarks UserTypes // Enum Wqu --> New/ Existing / VIP / Regular / bad
+}
+
+
+model TimeTracker {
+  id Int @id @default(autoincrement())
+  col1 DateTime
+  col2 DateTime @db.Date
+  col3 DateTime @db.Time
+  col4 DateTime @db.Timestamp()
+  col5 DateTime @db.DateTime()
+  
+}
+
+model HaNa {
+    id Int @id @default(autoincrement())
+    col1 Boolean
+    col2 String @db.Char(100) @default("Habibar iccha")
+
+}
+
+model BinaryObjectModel {
+  id Int @id @default(autoincrement())
+  col1 Bytes @db.Blob
+  col2 Bytes @db.TinyBlob
+  col3 Bytes @db.VarBinary(40)
+  col5 Bytes @db.VarBinary(100)
 }
