@@ -10,8 +10,17 @@ export async function POST(req, res) {
 
     const prisma = new PrismaClient();
 
-    const result = await prisma.employee.delete({
-      where: { id, id },
+    const result = await prisma.user.findMany({
+      include: {
+        profile: {
+          select: { lastName: true },
+        },
+        post: {
+          where: { title: { contains: "de" } },
+        },
+        comment: true,
+      },
+      orderBy: { id: "desc" },
     });
 
     return NextResponse.json({ status: "success", data: result });
@@ -19,6 +28,13 @@ export async function POST(req, res) {
     return NextResponse.json({ status: "Fail", data: e });
   }
 }
+
+// findMany({
+//   orderBy: { salary: "asc" },
+//   skip: 2,
+//   take: 3,
+//   select: { salary: true },
+// });
 
 // let result = await prisma.user.create({
 //   data: {
