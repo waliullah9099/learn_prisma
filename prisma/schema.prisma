@@ -104,7 +104,7 @@ model BinaryObjectModel {
 
 model user {
   id Int @id @default(autoincrement())
-  email String
+  email String @unique
   password String
   profile profile?
 
